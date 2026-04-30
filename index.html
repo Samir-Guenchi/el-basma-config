@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Basma Config</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .config-link {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .config-link:hover {
+            background: #0056b3;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 El Basma Mobile App Configuration</h1>
+        <p>This repository contains the remote configuration for the El Basma mobile application.</p>
+        
+        <h2>📱 Mobile Config</h2>
+        <a href="mobile-config.json" class="config-link">View mobile-config.json</a>
+        
+        <h2>📋 Current Configuration</h2>
+        <pre id="config">Loading...</pre>
+    </div>
+
+    <script>
+        fetch('mobile-config.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('config').textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                document.getElementById('config').textContent = 'Error loading config: ' + error.message;
+            });
+    </script>
+</body>
+</html>
